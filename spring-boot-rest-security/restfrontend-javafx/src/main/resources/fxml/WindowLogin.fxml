@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ControllerLogin">
+   <children>
+      <Hyperlink fx:id="linkSignup" text="Sign Up" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="2.0" />
+      <Label text="Username:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fieldUsername" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+      <Label fx:id="lblUsernameError" text="Username field can not be blank." textFill="RED" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="70.0" />
+      <Label text="Password:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="fieldPassword" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0" />
+      <Label fx:id="lblPasswordError" text="Password field can not be blank." textFill="RED" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="130.0" />
+      <Button fx:id="btnLogin" mnemonicParsing="false" text="Login" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="160.0" />
+      <Button fx:id="btnClear" layoutX="410.0" layoutY="170.0" mnemonicParsing="false" text="Clear" AnchorPane.leftAnchor="540.0" AnchorPane.topAnchor="160.0" />
+   </children>
+</AnchorPane>

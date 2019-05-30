@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="330.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ControllerSignup">
+   <children>
+      <Hyperlink fx:id="linkLogin" text="Login Page" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="2.0" />
+      <Label text="Name:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fieldName" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+      <Label fx:id="lblNameError" text="Name size (min=4, max=40)" textFill="RED" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="70.0" />
+      <Label text="Username:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fieldUsername" layoutX="210.0" layoutY="50.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0" />
+      <Label fx:id="lblUsernameError" text="Username size (min=3, max=15)" textFill="RED" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="130.0" />
+      <Label layoutX="20.0" layoutY="110.0" text="Email:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="160.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fieldEmail" layoutX="210.0" layoutY="110.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0" />
+      <Label fx:id="lblEmailError" layoutX="210.0" layoutY="140.0" text="Email size (min=1, max=40)" textFill="RED" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0" />
+      <Label layoutX="20.0" layoutY="170.0" text="Password:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="220.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="fieldPassword" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
+      <Label fx:id="lblPasswordError" layoutX="210.0" layoutY="200.0" text="Password size (min=6, max=20)" textFill="RED" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="250.0" />
+      <Button fx:id="btnSignup" mnemonicParsing="false" text="Signup" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="280.0" />
+      <Button fx:id="btnClear" layoutX="410.0" layoutY="170.0" mnemonicParsing="false" text="Clear" AnchorPane.leftAnchor="540.0" AnchorPane.topAnchor="280.0" />
+   </children>
+</AnchorPane>
