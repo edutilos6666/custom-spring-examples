@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.payload.SoccerPlayer;
+import com.example.payload.SoccerPlayerResponse;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -10,11 +10,11 @@ import javafx.scene.control.Label;
 public class ControllerSoccerPlayerTitledPane {
     @FXML
     private Label nameValue, ageValue, wageValue, countryValue, teamValue;
-    public void setData(SoccerPlayer soccerPlayer) {
-        nameValue.setText(soccerPlayer.getName());
-        ageValue.setText(soccerPlayer.getAge().toString());
-        wageValue.setText(soccerPlayer.getWage().toString());
-        countryValue.setText(soccerPlayer.getCountry());
-        teamValue.setText(soccerPlayer.getTeam());
+    public void setData(SoccerPlayerResponse soccerPlayerResponse) {
+        nameValue.setText(soccerPlayerResponse.getName());
+        ageValue.setText(soccerPlayerResponse.getAge().toString());
+        wageValue.setText(soccerPlayerResponse.getWage().toString());
+        countryValue.setText(soccerPlayerResponse.getCountry());
+        teamValue.setText(soccerPlayerResponse.getTeam());
     }
 }

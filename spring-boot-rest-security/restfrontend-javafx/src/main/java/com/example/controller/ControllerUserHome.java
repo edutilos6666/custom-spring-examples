@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.payload.SoccerPlayer;
+import com.example.payload.SoccerPlayerResponse;
 import com.example.payload.UserProfile;
 import com.example.utils.ApplicationLauncher;
 import com.example.utils.Constants;
@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ public class ControllerUserHome {
     private Label nameValue, usernameValue, joinedAtValue;
     @FXML
     private Accordion accordionPlayers;
+    @FXML
+    private AnchorPane panePaginatedSoccerPlayers;
     @Autowired
     private CustomComponentLoader customComponentLoader;
     @Autowired
@@ -45,6 +48,9 @@ public class ControllerUserHome {
             usernameValue.setText(currentUser.getUsername());
             joinedAtValue.setText(Constants.DATE_TIME_FORMATTER.format(currentUser.getJoinedAt()));
         }
+
+        panePaginatedSoccerPlayers.getChildren().clear();
+        panePaginatedSoccerPlayers.getChildren().addAll(customComponentLoader.loadWindowSoccerPlayerTableView().getChildren());
     }
 
     private void registerEvents() {
@@ -55,8 +61,8 @@ public class ControllerUserHome {
         });
     }
 
-    public void setData(List<SoccerPlayer> soccerPlayers) {
-        for(SoccerPlayer soccerPlayer: soccerPlayers) {
+    public void setData(List<SoccerPlayerResponse> soccerPlayers) {
+        for(SoccerPlayerResponse soccerPlayer: soccerPlayers) {
             accordionPlayers.getPanes().add(
                     customComponentLoader.loadWindowSoccerPlayerTitledPane(soccerPlayer));
         }

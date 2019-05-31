@@ -113,7 +113,7 @@ public class ApplicationLauncher {
         try {
             root = fxmlLoader.load();
             ControllerUserHome controller = fxmlLoader.getController();
-            controller.setData(apiClient.findAllSoccerPlayers());
+            controller.setData(apiClient.firdFirst10Players());
             getPrimaryStage().hide();
             getPrimaryStage().setScene(new Scene(root));
             getPrimaryStage().setTitle("UserHome Page");
