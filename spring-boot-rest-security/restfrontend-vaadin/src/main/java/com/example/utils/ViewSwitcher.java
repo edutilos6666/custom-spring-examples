@@ -22,11 +22,13 @@ public class ViewSwitcher {
     private HomeView homeView;
 
     public void switchToLoginView() {
+        loginView.clearFields();
         mainView.removeAll();
         mainView.add(loginView);
     }
 
     public void switchToRegisterView() {
+        registerView.clearFields();
         mainView.removeAll();
         mainView.add(registerView);
     }

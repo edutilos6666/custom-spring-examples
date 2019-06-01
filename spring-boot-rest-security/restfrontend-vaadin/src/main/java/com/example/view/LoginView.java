@@ -61,6 +61,10 @@ public class LoginView extends VerticalLayout {
         horizontalLayout = new HorizontalLayout(btnLogin, btnClear);
         add(horizontalLayout);
     }
+    public void clearFields() {
+        fieldUsername.clear();
+        fieldPassword.clear();
+    }
 
     private void addStyles() {
         addClassName("login-view");
@@ -88,8 +92,7 @@ public class LoginView extends VerticalLayout {
             }
         });
         btnClear.addClickListener(evt-> {
-           fieldUsername.clear();
-           fieldPassword.clear();
+            clearFields();
         });
 
         fieldUsername.addKeyPressListener(evt-> {

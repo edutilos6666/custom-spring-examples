@@ -1,14 +1,12 @@
 package com.example.view;
 
-import com.example.payload.UserProfile;
-import com.example.utils.ApiClient;
 import com.example.utils.CustomRegistry;
+import com.example.utils.ViewSwitcher;
+import com.example.view.components.PaginatedSoccerPlayersTabContent;
 import com.example.view.components.SoccerPlayersTabContent;
 import com.example.view.components.UserDetailsTabContent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.StyleSheet;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
@@ -31,9 +29,13 @@ public class HomeView extends VerticalLayout {
     private Tab tabSoccerPlayers;
     private Tab tabPaginatedSoccerPlayers;
     @Autowired
+    private ViewSwitcher viewSwitcher;
+    @Autowired
     private UserDetailsTabContent userDetailsTabContent;
     @Autowired
     private SoccerPlayersTabContent soccerPlayersTabContent;
+    @Autowired
+    private PaginatedSoccerPlayersTabContent paginatedSoccerPlayersTabContent;
 
     @PostConstruct
     public void init() {
@@ -45,8 +47,10 @@ public class HomeView extends VerticalLayout {
     public void fill() {
         userDetailsTabContent.fill();
         soccerPlayersTabContent.fill();
+        paginatedSoccerPlayersTabContent.fill();
         tabUserDetails.add(userDetailsTabContent);
         tabSoccerPlayers.add(soccerPlayersTabContent);
+        tabPaginatedSoccerPlayers.add(paginatedSoccerPlayersTabContent);
     }
     private void initComponents() {
         btnSignout = new Button("Sign Out");
@@ -73,6 +77,10 @@ public class HomeView extends VerticalLayout {
     }
 
     private void registerEvents() {
-
+        btnSignout.addClickListener(evt-> {
+            CustomRegistry.setAccessToken(null);
+            CustomRegistry.setCurrentUserProfile(null);
+            viewSwitcher.switchToLoginView();
+        });
     }
 }
