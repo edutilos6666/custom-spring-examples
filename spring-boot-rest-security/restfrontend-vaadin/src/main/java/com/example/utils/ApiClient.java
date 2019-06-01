@@ -47,7 +47,7 @@ public class ApiClient {
         return response.getBody();
     }
 
-    public List<SoccerPlayerResponse> firdFirst10Players() {
+    public List<SoccerPlayerResponse> findFirst10Players() {
         String url = String.format("%s/0/%d", SOCCER_PLAYERS_URL, Constants.SOCCER_PLAYERS_PAGE_SIZE);
         ResponseEntity<List<SoccerPlayerResponse>> response = restTemplate.exchange(url, HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<SoccerPlayerResponse>>() {

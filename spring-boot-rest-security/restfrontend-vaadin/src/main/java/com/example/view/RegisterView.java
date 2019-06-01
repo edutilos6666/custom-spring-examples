@@ -17,15 +17,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringComponent
 //@UIScope
 public class RegisterView extends VerticalLayout {
+    private Button btnLogin;
     private TextField fieldName, fieldUsername;
     private EmailField fieldEmail;
     private PasswordField fieldPassword;
-    private Button btnLogin, btnSignup, btnClear;
+    private HorizontalLayout horizontalLayout;
+    private Button btnSignup, btnClear;
     @Autowired
     private ApiClient apiClient;
 
     public RegisterView() {
         initComponents();
+        addStyles();
         registerEvents();
     }
 
@@ -37,7 +40,22 @@ public class RegisterView extends VerticalLayout {
         fieldPassword = new PasswordField("Password");
         btnSignup = new Button("Sign Up");
         btnClear = new Button("Clear");
-        add(btnLogin, fieldName, fieldUsername, fieldEmail, fieldPassword, new HorizontalLayout(btnSignup, btnClear));
+        horizontalLayout = new HorizontalLayout(btnSignup, btnClear);
+        add(btnLogin, fieldName, fieldUsername, fieldEmail, fieldPassword, horizontalLayout);
+    }
+
+    private void addStyles() {
+        addClassName("register-view");
+        setSizeFull();
+        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+
+        fieldName.setWidth("100%");
+        fieldUsername.setWidth("100%");
+        fieldEmail.setWidth("100%");
+        fieldPassword.setWidth("100%");
+        horizontalLayout.setWidth("100%");
+        btnSignup.setWidth("100%");
+        btnClear.setWidth("100%");
     }
 
     private void registerEvents() {
