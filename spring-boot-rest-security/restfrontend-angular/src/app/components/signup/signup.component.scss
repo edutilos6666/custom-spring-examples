@@ -1,0 +1,14 @@
+div.form-group  {
+width: 100%;
+// border: 1px solid black;
+}
+
+div.form-group * {
+  width: 100%;
+  min-width: 0;
+}
+
+
+div.form-actions * {
+  float: right;
+}

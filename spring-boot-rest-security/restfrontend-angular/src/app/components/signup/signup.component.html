@@ -1,0 +1,105 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Signup Page</mat-card-title>
+    <mat-card-subtitle>
+      <a [routerLink]="[ '/login']">Already registered?</a>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
+      <mat-card-content>
+        <!-- name -->
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput formControlName="name" placeholder="Enter your name"/>
+          </mat-form-field>
+          <mat-error>
+              <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                  <p *ngIf="name.errors?.required">
+                      Name is required
+                  </p>
+              </div>
+          </mat-error>
+        </div>
+
+        <!-- username -->
+        <div class="form-group">
+            <mat-form-field>
+              <input matInput formControlName="username" placeholder="Enter your username" />
+            </mat-form-field>
+            <mat-error>
+                <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                    <p *ngIf="username.errors?.required">
+                        Username is required
+                    </p>
+                </div>
+            </mat-error>
+          </div>
+
+
+          <!-- email -->
+          <div class="form-group">
+              <mat-form-field>
+                <input matInput formControlName="email" placeholder="Enter your email" />
+              </mat-form-field>
+              <mat-error>
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                      <p *ngIf="email.errors?.required">
+                          Email is required
+                      </p>
+                      <p *ngIf="email.errors?.email">
+                          Email is in wrong format
+                      </p>
+                    </div>
+              </mat-error>
+            </div>
+
+            <!-- password -->
+            <div class="form-group">
+                <mat-form-field>
+                  <input matInput formControlName="password"  placeholder="Enter your password"
+                   type="password"
+                  />
+                </mat-form-field>
+                <mat-error>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <p *ngIf="password.errors?.required">
+                        Password is required
+                    </p>
+                  </div>
+                </mat-error>
+              </div>
+
+            <!-- repeat password -->
+             <!-- password -->
+             <div class="form-group">
+                <mat-form-field>
+                  <input matInput formControlName="passwordRepeat"  placeholder="Repeat your password"
+                   type="password"
+                  />
+                </mat-form-field>
+                <mat-error>
+                    <div *ngIf="passwordRepeat.invalid && (passwordRepeat.dirty || passwordRepeat.touched)">
+                        <p *ngIf="passwordRepeat.errors?.required">
+                            PasswordRepeat is required
+                        </p>
+                      </div>
+                </mat-error>
+              </div>
+
+              <mat-error>
+                  <div>
+                      <p *ngIf="signupForm.errors?.doesMatchPassword">
+                          Password does not match
+                      </p>
+                  </div>
+              </mat-error>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="form-actions">
+            <button mat-raised-button type="submit" color="primary" [disabled]="signupForm.invalid">Submit</button>
+            <button mat-raised-button color="warn" (click)="clearFields()" [disabled]="allFieldsEmpty()">Clear</button>
+        </div>
+      </mat-card-actions>
+  </form>
+</mat-card>

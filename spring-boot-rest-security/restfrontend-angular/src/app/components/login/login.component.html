@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Login Page</mat-card-title>
+    <mat-card-subtitle>
+      <a [routerLink]="[ '/']">Not registered yet?</a>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <mat-card-content>
+        <!-- usernameOrEmail -->
+        <div class="form-group">
+            <mat-form-field>
+              <input matInput formControlName="usernameOrEmail" placeholder="Enter your usernameOrEmail"/>
+            </mat-form-field>
+            <mat-error>
+                <div *ngIf="usernameOrEmail.invalid && (usernameOrEmail.dirty || usernameOrEmail.touched)">
+                    <p *ngIf="usernameOrEmail.errors?.required">
+                        usernameOrEmail is required
+                    </p>
+                </div>
+            </mat-error>
+          </div>
+
+
+        <!-- password -->
+        <div class="form-group">
+            <mat-form-field>
+              <input matInput formControlName="password" placeholder="Enter your password"/>
+            </mat-form-field>
+            <mat-error>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <p *ngIf="password.errors?.required">
+                        password is required
+                    </p>
+                </div>
+            </mat-error>
+          </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="form-actions">
+            <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid">Submit</button>
+            <button mat-raised-button color="warn" (click)="clearFields()" [disabled]="allFieldsEmpty()">Clear</button>
+        </div>
+    </mat-card-actions>
+  </form>
+</mat-card>
