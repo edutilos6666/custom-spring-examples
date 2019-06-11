@@ -39,7 +39,10 @@ export class LoginComponent implements OnInit {
     password: form.password}).subscribe(tokenHolder=> {
       if(tokenHolder !== null && tokenHolder.accessToken !== null) {
         this.constants.AUTH_TOKEN = tokenHolder.accessToken;
-        this.router.navigateByUrl("/home");
+        this.apiClient.findByUsername(form.usernameOrEmail).subscribe(user=> {
+          this.constants.CURRENT_USER = Object.create(user);
+          this.router.navigateByUrl("/home");
+        });
       }
     });
   }

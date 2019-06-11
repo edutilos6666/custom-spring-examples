@@ -44,4 +44,15 @@ export class ApiClientService {
   findAllSoccerPlayers(): Observable<SoccerPlayerResponse[]> {
     return this.httpClient.get<SoccerPlayerResponse[]>(this.constants.SOCCER_PLAYERS_URL);
   }
+
+
+  findPlayersbyPage(page: number): Observable<SoccerPlayerResponse[]> {
+    const url = `${this.constants.SOCCER_PLAYERS_URL}/${page}/${this.constants.PAGE_SIZE}`;
+    return this.httpClient.get<SoccerPlayerResponse[]>(url);
+  }
+
+  getTotalSoccerPlayersCount(): Observable<number> {
+    const url = `${this.constants.SOCCER_PLAYERS_URL}/totalElementsCount/${this.constants.PAGE_SIZE}`;
+    return this.httpClient.get<number>(url);
+  }
 }

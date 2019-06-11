@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span> Welcome {{currentUser.name}}!!!</span>
+    <span class="custom-spacer"></span>
+    <button mat-raised-button (click)="signOut()">
+      <mat-icon class="custom-icon" aria-hidden="false" aria-label="signout icon">exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

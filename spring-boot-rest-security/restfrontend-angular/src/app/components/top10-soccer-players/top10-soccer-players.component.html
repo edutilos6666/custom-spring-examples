@@ -1,0 +1,43 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let player of players">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{player.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{player.name}} is a fast player.
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list>
+            <mat-list-item>
+                <label>Name: </label>
+                <span class="filler"></span>
+                <span>{{player.name}}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <label>Age: </label>
+                <span class="filler"></span>
+                <span>{{player.age}}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <label>Wage: </label>
+                <span class="filler"></span>
+                <span>{{player.wage}}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <label>Country: </label>
+                <span class="filler"></span>
+                <span>{{player.country}}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <label>Team: </label>
+                <span class="filler"></span>
+                <span>{{player.team}}</span>
+            </mat-list-item>
+        </mat-list>
+    </mat-expansion-panel>
+</mat-accordion>

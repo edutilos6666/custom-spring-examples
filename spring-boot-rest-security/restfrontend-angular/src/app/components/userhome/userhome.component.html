@@ -1,3 +1,6 @@
-<p>
-  userhome works!
-</p>
+<app-header></app-header>
+<mat-tab-group>
+    <mat-tab label="UserDetails"> <app-user-details></app-user-details> </mat-tab>
+    <mat-tab label="Top 10 Soccer Players"><app-top10-soccer-players [players]="players"></app-top10-soccer-players></mat-tab>
+    <mat-tab label="All Soccer Players"><app-all-soccer-players></app-all-soccer-players> </mat-tab>
+</mat-tab-group>

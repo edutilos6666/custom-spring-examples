@@ -25,7 +25,7 @@
         <!-- password -->
         <div class="form-group">
             <mat-form-field>
-              <input matInput formControlName="password" placeholder="Enter your password"/>
+              <input matInput formControlName="password" type="password"  placeholder="Enter your password" />
             </mat-form-field>
             <mat-error>
                 <div *ngIf="password.invalid && (password.dirty || password.touched)">

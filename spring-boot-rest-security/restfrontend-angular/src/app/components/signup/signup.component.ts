@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,NgForm, FormControl } from '@angular/forms';
 import { SignUpRequest } from '../../models/SignUpRequest';
 import { PasswordValidator } from '../../validators/PasswordValidator';
+import { ApiClientService } from 'src/app/services/api-client.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +17,9 @@ export class SignupComponent implements OnInit {
   // username: string = "";
   // email: string = "";
   // password: string = "";
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, 
+              private apiClient: ApiClientService, 
+              private router: Router) {
     // this.signupForm = formBuilder.group({
     //   "name": [null, Validators.required],
     //   "username": [null , Validators.required],
@@ -28,14 +32,15 @@ export class SignupComponent implements OnInit {
   createFormGroup() {
     return new FormGroup({
       name: new FormControl(this.signupRequest.name,
-            [Validators.required]),
+            [Validators.required, Validators.minLength(4), Validators.maxLength(40)]),
       username: new FormControl(this.signupRequest.username,
-                [Validators.required]),
+                [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
       email: new FormControl(this.signupRequest.email,
-              [Validators.required, Validators.email]),
+              [Validators.required, Validators.email, Validators.maxLength(40)]),
       password: new FormControl(this.signupRequest.password,
-                [Validators.required]),
-      passwordRepeat: new FormControl("", [Validators.required])
+                [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
+      passwordRepeat: new FormControl("", 
+                [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
     }, {
       validators: [PasswordValidator.validate.bind(this)]
     });
@@ -46,6 +51,12 @@ export class SignupComponent implements OnInit {
 
   onSubmit(form:NgForm) {
     console.log(form);
+    const signupRequest = new SignUpRequest();
+    signupRequest.name = form.name;
+    signupRequest.username = form.username;
+    signupRequest.email = form.email;
+    signupRequest.password = form.password;
+    this.apiClient.signupAction(signupRequest).subscribe(one=> this.router.navigateByUrl("/login"));
   }
 
   clearFields() {
